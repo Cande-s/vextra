@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Portfolio Completo – Vextra</title>
+  <meta name="description"
+    content="Explorá en detalle los proyectos de Vextra. Trabajos de diseño web personalizados y adaptaciones de plantillas profesionales." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Cormorant+Garamond:wght@300;400;600&family=Inter:wght@300;400;500;600&display=swap"
+    rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+
+  <!-- ===== NAVBAR ===== -->
+  <header class="navbar" id="navbar">
+    <div class="nav-container">
+      <a href="index.html" class="logo">Vextra</a>
+      <nav class="nav-links" id="navLinks">
+        <a href="index.html#inicio">Inicio</a>
+        <a href="#">Portfolio</a>
+      </nav>
+      <div class="nav-cta-wrap">
+        <span class="nav-idea-text">¿Tenés una idea?</span>
+        <a href="index.html#contacto" class="btn-cta" id="hero-cta">Contactanos</a>
+      </div>
+      <button class="hamburger" id="hamburger" aria-label="Menú">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+    <!-- Mobile menu -->
+    <div class="mobile-menu" id="mobileMenu">
+      <a href="index.html#inicio" class="mobile-link">Inicio</a>
+      <a href="#" class="mobile-link">Portfolio</a>
+      <div class="mobile-cta-wrap">
+        <span class="nav-idea-text">¿Tenés una idea?</span>
+        <a href="index.html#contacto" class="btn-cta">Contactanos</a>
+      </div>
+    </div>
+  </header>
+
+  <!-- ===== PAGE HEADER ===== -->
+  <section class="hero" id="inicio">
+    <div class="hero-content">
+      <h1 class="hero-title">Nuestro <span class="title-accent">Portfolio</span></h1>
+      <p class="hero-sub" style="max-width: 700px;">
+        Explorá el detalle de nuestros desarrollos. Cada sitio cuenta una historia única. Acá podrás ver cómo trabajamos tanto en código 100% personalizado como en adaptaciones profesionales de plantillas.
+      </p>
+    </div>
+  </section>
+
+  <!-- ===== EXTENDED SHOWCASE ===== -->
+  <section class="portfolio-extended">
+    <div class="container">
+      
+      <!-- PROYECTO 1 - FINA -->
+      <div class="showcase-item">
+        <div class="showcase-media">
+          <div class="showcase-img-box">
+            <img src="assets/portfolio_fina.png" alt="Vista principal de Fina Cocktail Bar" class="showcase-img" />
+          </div>
+          <a href="https://fina-bar-web.vercel.app/?utm_source=ig&utm_medium=social&utm_content=link_in_bio&fbclid=PAb21jcAROiedleHRuA2FlbQIxMQBzcnRjBmFwcF9pZA81NjcwNjczNDMzNTI0MjcAAad4F65sUYL4MofWHKlDcIUESujg8_DwyVqGH5rRMIQ3G3CDJZJ-ujH8IqDwUQ_aem_hTF5GQFBRYrLLzg5Cz2CZw" target="_blank" rel="noopener" class="btn-primary" style="width: 100%; text-align: center;">Visitar sitio web en vivo</a>
+        </div>
+        <div class="showcase-content">
+          <span class="work-tag">Bar &amp; Restaurante</span>
+          <div class="development-badge badge-custom">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="m18 16 4-4-4-4M6 8l-4 4 4 4M14.5 4l-5 16"/>
+            </svg>
+            100% Personalizado a la Marca
+          </div>
+          <h2 class="showcase-title">Fina Cocktail Bar</h2>
+          
+          <div class="showcase-description">
+            <p><strong>El Desafío:</strong> Fina necesitaba digitalizar su menú físico y dotar a su carta de un atractivo visual moderno, interactivo y acorde a su estética céntrica nocturna.</p>
+            <p><strong>Nuestra Solución:</strong> Se diseñó un menú digital interactivo desde cero sin depender de plantillas. Se programaron sistemas de filtros dinámicos (Sin TACC, Vegetarianos, Categorías de bebidas) y animaciones sutiles. Se integró una <strong>base de datos autogestionable</strong> que le permite al dueño agregar, borrar o modificar artículos de la carta en cualquier momento, dándole total independencia. El resultado es un sitio web fluido estilo 'App' nativa que mejora la experiencia en la mesa.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- PROYECTO 2 - EJEMPLO PLANTILLA -->
+      <div class="showcase-item reversed">
+        <div class="showcase-media">
+          <div class="showcase-img-box">
+            <img src="assets/portfolio_2.png" alt="Proyecto E-Commerce" class="showcase-img" />
+          </div>
+          <a href="#" class="btn-primary" style="opacity: 0.6; pointer-events: none; width: 100%; text-align: center;">Sitio actualmente en construcción</a>
+        </div>
+        <div class="showcase-content">
+          <span class="work-tag">Tienda Online</span>
+          <div class="development-badge badge-template">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <rect width="18" height="18" x="3" y="3" rx="2" />
+              <path d="M3 9h18M9 21V9" />
+            </svg>
+            Adaptación de Plantilla
+          </div>
+          <h2 class="showcase-title">Proyecto Moda Actual</h2>
+          
+          <div class="showcase-description">
+            <p><strong>El Desafío:</strong> Una tienda de ropa que buscaba lanzar su presencia online de manera rápida y eficiente sin perder profesionalismo.</p>
+            <p><strong>Nuestra Solución:</strong> Elegimos y adecuamos una plantilla premium, integrándole la tipografía, los colores y las imágenes de la marca. Se configuró todo el e-commerce para soportar carrito de compras y pasarela de pago, brindando una experiencia sólida con un presupuesto optimizado.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- PROYECTO 3 - EJEMPLO DEFAULT -->
+      <div class="showcase-item">
+        <div class="showcase-media">
+          <div class="showcase-img-box">
+            <img src="assets/portfolio_3.png" alt="Sitio Corporativo" class="showcase-img" />
+          </div>
+          <a href="#" class="btn-primary" style="opacity: 0.6; pointer-events: none; width: 100%; text-align: center;">Próximamente</a>
+        </div>
+        <div class="showcase-content">
+          <span class="work-tag">Marca Personal</span>
+          <div class="development-badge badge-custom">
+             <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="m18 16 4-4-4-4M6 8l-4 4 4 4M14.5 4l-5 16"/>
+            </svg>
+            100% Personalizado a la Marca
+          </div>
+          <h2 class="showcase-title">Estudio Jurídico Nova</h2>
+          
+          <div class="showcase-description">
+            <p><strong>El Desafío:</strong> Un estudio de abogados buscaba transmitir confianza, solidez corporativa y estar accesibles para consultas las 24 hrs.</p>
+            <p><strong>Nuestra Solución:</strong> Se diseñó de cero una arquitectura de embudo, guiando al usuario desde la lectura de "casos de éxito" hacia agendar una llamada. Se optimizó toda la experiencia para buscadores (SEO) local.</p>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ===== CTA BANNER ===== -->
+  <section class="cta-banner" style="margin-top: 100px;">
+    <div class="container">
+      <div class="cta-inner">
+        <div class="cta-text">
+          <p class="cta-question">Tu turno</p>
+          <h2 class="cta-title">¿Querés tu propio caso de éxito?</h2>
+        </div>
+        <a href="index.html#contacto" class="btn-primary large">Contactanos ahora</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== FOOTER ===== -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-inner">
+        <div class="footer-brand">
+          <a href="index.html" class="logo footer-logo">Vextra</a>
+          <p class="footer-tagline">Diseño web que impresiona.</p>
+        </div>
+        <div class="footer-links">
+          <a href="index.html#inicio">Inicio</a>
+          <a href="#">Portfolio</a>
+          <a href="index.html#contacto">Contacto</a>
+        </div>
+        <div class="footer-contact">
+          <a href="mailto:vextrasystems@gmail.com">vextrasystems@gmail.com</a>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>© 2026 Vextra. Todos los derechos reservados.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+
+</html>

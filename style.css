@@ -656,7 +656,7 @@ img {
 .work-overlay {
   position: absolute;
   inset: 0;
-  background: rgba(8,10,14,0.7);
+  background: linear-gradient(to top, rgba(0,0,0,0.95) 0%, rgba(0,0,0,0.2) 100%);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -1018,4 +1018,115 @@ a.contact-value:hover { color: var(--gold); }
   .works { padding: 70px 0; }
   .cta-banner { padding: 70px 0; }
   .contact { padding: 70px 0; }
+  /* Extended Portfolio */
+  .showcase-item { flex-direction: column !important; gap: 40px !important; }
+  .showcase-media { max-width: 100% !important; }
+}
+
+/* =====================
+   PORTFOLIO EXTENDED PAGE
+   ===================== */
+.page-header {
+  padding: 160px 0 80px;
+  background-color: var(--black);
+  text-align: center;
+  border-bottom: 1px solid var(--black-border);
+}
+.page-header.pattern-bg {
+  position: relative;
+}
+.page-header.pattern-bg::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  opacity: 0.15;
+  background-image: url('assets/pattern.svg');
+  background-size: cover;
+  background-position: center;
+  pointer-events: none;
+}
+
+.portfolio-extended {
+  padding: 100px 0;
+}
+
+.showcase-item {
+  display: flex;
+  align-items: center;
+  gap: 60px;
+  margin-bottom: 120px;
+}
+.showcase-item.reversed {
+  flex-direction: row-reverse;
+}
+.showcase-item:last-child {
+  margin-bottom: 0;
+}
+
+.showcase-media {
+  flex: 1;
+  max-width: 50%;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.showcase-img-box {
+  width: 100%;
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  border: 1px solid var(--black-border);
+  box-shadow: 0 20px 50px rgba(0,0,0,0.5);
+  position: relative;
+}
+.showcase-img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.showcase-content {
+  flex: 1;
+}
+.development-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 18px;
+  border-radius: 30px;
+  font-size: 0.75rem;
+  font-weight: 500;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  margin-bottom: 24px;
+}
+.badge-custom {
+  background: var(--black-card);
+  border: 1px solid var(--emerald);
+  color: var(--gold);
+}
+.badge-template {
+  background: var(--black-soft);
+  border: 1px solid var(--black-border);
+  color: var(--white-muted);
+}
+.showcase-title {
+  font-family: var(--font-serif);
+  font-size: 2.5rem;
+  font-weight: 400;
+  color: var(--white);
+  margin-bottom: 20px;
+}
+.showcase-description {
+  margin-bottom: 30px;
+}
+.showcase-description p {
+  font-size: 1.05rem;
+  color: var(--white-muted);
+  line-height: 1.8;
+  margin-bottom: 16px;
+}
+.showcase-description strong {
+  color: var(--white);
+  font-weight: 500;
 }

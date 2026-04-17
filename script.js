@@ -64,17 +64,23 @@ function handleFormSubmit(e) {
   const btnText = document.getElementById('btn-text');
   const success = document.getElementById('formSuccess');
 
+  const name = form.name.value.trim();
+  const projectName = form.projectName.value.trim();
+  const project = form.project.value.trim();
+
+  // Validación de campos vacíos
+  if (!name || !projectName || !project) {
+    alert('Es importante que se llenen todas así podemos ayudarlo y ofrecer ideas desde el comienzo.');
+    return;
+  }
+
   btn.disabled = true;
   btnText.textContent = 'Enviando…';
 
   // Build mailto link
-  const name    = form.name.value.trim();
-  const email   = form.email.value.trim();
-  const project = form.project.value.trim();
-
-  const subject = encodeURIComponent(`Nuevo proyecto – ${name}`);
-  const body    = encodeURIComponent(
-    `Hola Vextra!\n\nMi nombre es ${name}.\nMi email: ${email}\n\nMi proyecto:\n${project}`
+  const subject = encodeURIComponent(`${projectName}`);
+  const body = encodeURIComponent(
+    `Nombre del contacto: ${name}\n\nDetalles del proyecto en mente:\n${project}`
   );
 
   window.location.href = `mailto:vextrasystems@gmail.com?subject=${subject}&body=${body}`;
