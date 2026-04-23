@@ -33,7 +33,7 @@ document.querySelectorAll('.mobile-link, .mobile-cta-wrap a').forEach(link => {
 
 // --- SCROLL REVEAL (Intersection Observer) ---
 const revealEls = document.querySelectorAll(
-  '.stat-card, .service-card, .work-card, .about-text, .about-stats, .contact-info, .contact-form, .cta-text, .cta-banner .btn-primary'
+  '.stat-card, .service-card, .process-card, .work-card, .about-text, .about-stats, .contact-info, .contact-form, .cta-text, .cta-banner .btn-primary'
 );
 
 revealEls.forEach((el, i) => {
