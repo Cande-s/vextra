@@ -1345,6 +1345,12 @@ a.contact-value:hover { color: var(--gold); }
   letter-spacing: 0.04em;
   margin-top: 32px;
 }
+.manifesto-line.manifesto-small {
+  color: var(--white);
+  font-size: clamp(1rem, 2vw, 1.5rem);
+  font-weight: 300;
+  margin-top: 28px;
+}
 .manifesto-line.manifesto-muted + .manifesto-accent {
   font-size: clamp(1.6rem, 3vw, 2.4rem);
 }
