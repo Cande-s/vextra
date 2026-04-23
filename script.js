@@ -123,3 +123,26 @@ document.querySelectorAll('.work-card, .service-card, .stat-card').forEach(card 
     card.style.setProperty('--mouse-y', `${y}%`);
   });
 });
+
+// --- MANIFESTO PHRASE REVEAL ---
+const phraseObserver = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('phrase-visible');
+      phraseObserver.unobserve(entry.target);
+    }
+  });
+}, {
+  threshold: 0.2,
+  rootMargin: '0px 0px -30px 0px'
+});
+
+document.querySelectorAll('.reveal-phrase').forEach(el => phraseObserver.observe(el));
+
+// Also reveal manifesto values
+document.querySelectorAll('.manifesto-value').forEach((el, i) => {
+  el.classList.add('reveal');
+  if (i === 1) el.classList.add('reveal-delay-1');
+  if (i === 2) el.classList.add('reveal-delay-2');
+  observer.observe(el);
+});

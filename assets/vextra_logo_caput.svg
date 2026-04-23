@@ -3,18 +3,18 @@
     <style>
       @import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@600');
       .logo {
-        font-family: 'Cinzel', serif;
+        font-family: 'Cinzel', Georgia, serif;
         font-size: 130px;
         font-weight: 600;
         letter-spacing: 0.28em;
         text-transform: uppercase;
-        fill: #c9a84c;
+        fill: #c47a5a;
       }
     </style>
     <filter id="glow" x="-50%" y="-50%" width="200%" height="200%">
-      <feDropShadow dx="0" dy="0" stdDeviation="25" flood-color="#c9a84c" flood-opacity="0.35" />
+      <feDropShadow dx="0" dy="0" stdDeviation="22" flood-color="#754437" flood-opacity="0.45" />
     </filter>
   </defs>
-  <rect width="100%" height="100%" fill="#0b1210" rx="0" />
+  <rect width="100%" height="100%" fill="#1c2a38" rx="0" />
   <text x="48.5%" y="54%" text-anchor="middle" dominant-baseline="middle" class="logo" filter="url(#glow)">VEXTRA</text>
 </svg>
