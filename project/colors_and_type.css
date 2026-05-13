@@ -1,0 +1,230 @@
+/* =====================================================
+   VEXTRA — Colors & Type
+   Source of truth: Vextra/02-DISEÑO.md
+   Dark mode by default. One typeface (Geist Sans).
+   One accent color (green). No shadows.
+   ===================================================== */
+
+/* --- Geist Sans Variable (Google Fonts substitution) --- */
+@import url("https://fonts.googleapis.com/css2?family=Geist:wght@100..900&display=swap");
+
+:root {
+  /* ---------- COLOR TOKENS ---------- */
+
+  /* Backgrounds */
+  --bg-base: #1c1c1e;
+  --bg-elevated: #242426;
+  --bg-overlay: #2c2c2e;
+
+  /* Foregrounds */
+  --fg-primary: #ffffff;
+  --fg-secondary: #999999;
+  --fg-muted: #666666;
+
+  /* Borders */
+  --border-subtle: #2c2c2e;
+  --border-default: #3a3a3c;
+
+  /* Accent (brand bronze/copper) */
+  --accent-deep: #4a301e;
+  --accent-action: #c68a61;
+  --accent-hover: #d8986c;
+
+  /* States */
+  --error: #ef4444;
+  --success: #c68a61;
+
+  /* ---------- TYPE FAMILY ---------- */
+  --font-sans: "Geist", ui-sans-serif, system-ui, -apple-system, "Segoe UI",
+    Roboto, sans-serif;
+
+  /* ---------- TYPE SCALE (mobile-first) ---------- */
+  /* Each token has a desktop step-up via media query below */
+  --text-display: 2.5rem;   /* 40px mobile / 72px desktop */
+  --text-h1: 2rem;          /* 32px / 48px */
+  --text-h2: 1.5rem;        /* 24px / 32px */
+  --text-h3: 1.25rem;       /* 20px / 24px */
+  --text-body-lg: 1.125rem; /* 18px / 20px */
+  --text-body: 1rem;        /* 16px / 16px */
+  --text-sm: 0.875rem;      /* 14px */
+  --text-xs: 0.75rem;       /* 12px */
+
+  /* Weights */
+  --weight-display: 600;
+  --weight-h1: 600;
+  --weight-h2: 600;
+  --weight-h3: 500;
+  --weight-body: 400;
+  --weight-eyebrow: 500;
+
+  /* Letter spacing */
+  --tracking-tight: -0.02em;  /* display, h1 */
+  --tracking-normal: 0;       /* body */
+  --tracking-widest: 0.15em;  /* eyebrows only */
+
+  /* Line height */
+  --leading-display: 1.1;
+  --leading-heading: 1.2;
+  --leading-body: 1.6;
+
+  /* ---------- SPACING (4px base) ---------- */
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-6: 24px;
+  --space-8: 32px;
+  --space-12: 48px;
+  --space-16: 64px;
+  --space-24: 96px;
+  --space-32: 128px;
+  --space-40: 160px;
+
+  /* Section vertical padding */
+  --section-py-mobile: 96px;
+  --section-py-desktop: 160px;
+
+  /* Container */
+  --container-max: 1200px;
+  --container-px-mobile: 24px;
+  --container-px-desktop: 48px;
+
+  /* ---------- RADII ---------- */
+  --radius-sm: 6px;   /* inputs, tags, chips */
+  --radius-md: 10px;  /* buttons, cards */
+  --radius-lg: 16px;  /* highlight blocks, modals */
+  --radius-full: 9999px;
+
+  /* ---------- SHADOWS ---------- */
+  /* No drop shadows by default. Only the focus glow exists. */
+  --shadow-none: none;
+  --focus-ring: 0 0 0 2px rgba(34, 197, 94, 0.4);
+
+  /* ---------- TRANSITIONS ---------- */
+  --t-hover: 150ms ease;
+  --t-fade: 400ms ease-out;
+  --t-menu: 200ms ease-in-out;
+}
+
+@media (min-width: 768px) {
+  :root {
+    --text-display: 4.5rem;   /* 72px */
+    --text-h1: 3rem;          /* 48px */
+    --text-h2: 2rem;          /* 32px */
+    --text-h3: 1.5rem;        /* 24px */
+    --text-body-lg: 1.25rem;  /* 20px */
+  }
+}
+
+/* =====================================================
+   SEMANTIC ELEMENTS
+   Apply tokens to plain HTML so unstyled markup looks
+   like VEXTRA out of the box.
+   ===================================================== */
+
+html {
+  background: var(--bg-base);
+  color: var(--fg-primary);
+  font-family: var(--font-sans);
+  font-size: 16px;
+  line-height: var(--leading-body);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  margin: 0;
+  background: var(--bg-base);
+  color: var(--fg-primary);
+}
+
+/* --- Headings --- */
+h1, .h1, .text-display {
+  font-size: var(--text-display);
+  font-weight: var(--weight-display);
+  letter-spacing: var(--tracking-tight);
+  line-height: var(--leading-display);
+  color: var(--fg-primary);
+  margin: 0;
+}
+
+h2, .h2 {
+  font-size: var(--text-h1);
+  font-weight: var(--weight-h1);
+  letter-spacing: var(--tracking-tight);
+  line-height: var(--leading-heading);
+  color: var(--fg-primary);
+  margin: 0;
+}
+
+h3, .h3 {
+  font-size: var(--text-h2);
+  font-weight: var(--weight-h2);
+  line-height: var(--leading-heading);
+  color: var(--fg-primary);
+  margin: 0;
+}
+
+h4, .h4 {
+  font-size: var(--text-h3);
+  font-weight: var(--weight-h3);
+  line-height: var(--leading-heading);
+  color: var(--fg-primary);
+  margin: 0;
+}
+
+/* --- Body text --- */
+p, .body {
+  font-size: var(--text-body);
+  font-weight: var(--weight-body);
+  line-height: var(--leading-body);
+  color: var(--fg-secondary);
+  margin: 0;
+}
+
+.body-lg {
+  font-size: var(--text-body-lg);
+  font-weight: var(--weight-body);
+  line-height: var(--leading-body);
+  color: var(--fg-secondary);
+}
+
+.text-sm {
+  font-size: var(--text-sm);
+  color: var(--fg-secondary);
+}
+
+/* --- Eyebrow / label --- */
+.eyebrow {
+  font-size: var(--text-xs);
+  font-weight: var(--weight-eyebrow);
+  letter-spacing: var(--tracking-widest);
+  text-transform: uppercase;
+  color: var(--fg-muted);
+}
+
+/* --- Links --- */
+a {
+  color: var(--accent-action);
+  text-decoration: none;
+  transition: color var(--t-hover);
+}
+a:hover {
+  color: var(--accent-hover);
+}
+a:focus-visible {
+  outline: none;
+  box-shadow: var(--focus-ring);
+  border-radius: 2px;
+}
+
+/* --- Code --- */
+code, kbd, samp {
+  font-family: ui-monospace, SFMono-Regular, "SF Mono", Consolas,
+    "Liberation Mono", Menlo, monospace;
+  font-size: 0.9em;
+  background: var(--bg-elevated);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-sm);
+  padding: 2px 6px;
+}

@@ -1,0 +1,307 @@
+<!doctype html>
+<html lang="es">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>VEXTRA — Estudio digital</title>
+  <meta name="description"
+    content="VEXTRA — Estudio digital. Diseñamos y desarrollamos soluciones digitales personalizadas para que tu negocio crezca sin atajos ni plantillas." />
+  <link rel="stylesheet" href="colors_and_type.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400..900&display=swap" rel="stylesheet">
+  <link rel="icon" type="image/png" href="vextrasinfondo.png" />
+  <style>
+    body {
+      margin: 0;
+    }
+
+    ::selection {
+      background: var(--accent-action);
+      color: var(--bg-base);
+    }
+
+    /* Smooth anchor scrolling */
+    html {
+      scroll-behavior: smooth;
+    }
+
+    /* Scrollbar */
+    ::-webkit-scrollbar {
+      width: 10px;
+      height: 10px;
+    }
+
+    ::-webkit-scrollbar-track {
+      background: var(--bg-base);
+    }
+
+    ::-webkit-scrollbar-thumb {
+      background: var(--border-default);
+      border-radius: 999px;
+    }
+
+    ::-webkit-scrollbar-thumb:hover {
+      background: var(--accent-hover);
+    }
+
+    /* Nav link underline reveal */
+    .vx-nav-link::after {
+      content: "";
+      position: absolute;
+      left: 2px;
+      right: 2px;
+      bottom: -2px;
+      height: 1px;
+      background: var(--accent-action);
+      transform: scaleX(0);
+      transform-origin: left center;
+      transition: transform 220ms ease;
+    }
+
+    .vx-nav-link:hover {
+      color: var(--fg-primary) !important;
+    }
+
+    .vx-nav-link:hover::after {
+      transform: scaleX(1);
+    }
+
+    /* Process steps subtle hover */
+    .vx-step:hover {
+      background: var(--bg-elevated) !important;
+    }
+
+    /* Pulse */
+    @keyframes vx-pulse {
+
+      0%,
+      100% {
+        box-shadow: 0 0 0 4px rgba(198, 138, 97, 0.18);
+      }
+
+      50% {
+        box-shadow: 0 0 0 6px rgba(198, 138, 97, 0.06);
+      }
+    }
+
+    /* Ambient pattern — slow drift, very subtle */
+    @keyframes vx-glow-drift-a {
+
+      0%,
+      100% {
+        transform: translate3d(0, 0, 0);
+        opacity: 1;
+      }
+
+      50% {
+        transform: translate3d(2%, -1%, 0);
+        opacity: 0.85;
+      }
+    }
+
+    @keyframes vx-glow-drift-b {
+
+      0%,
+      100% {
+        transform: translate3d(0, 0, 0);
+        opacity: 0.9;
+      }
+
+      50% {
+        transform: translate3d(-2%, 1.5%, 0);
+        opacity: 1;
+      }
+    }
+
+    @keyframes vx-lines-drift {
+      0% {
+        transform: translate3d(-1%, 0, 0);
+      }
+
+      50% {
+        transform: translate3d(1%, -0.5%, 0);
+      }
+
+      100% {
+        transform: translate3d(-1%, 0, 0);
+      }
+    }
+
+    @keyframes vx-fade-in {
+      from {
+        opacity: 0;
+      }
+
+      to {
+        opacity: 1;
+      }
+    }
+
+    @keyframes vx-modal-in {
+      from {
+        opacity: 0;
+        transform: translateY(8px) scale(0.98);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+      }
+    }
+
+    /* Mobile responsive */
+    @media (max-width: 900px) {
+      .vx-project-large {
+        grid-template-columns: 1fr !important;
+      }
+
+      .vx-footer-grid {
+        grid-template-columns: repeat(2, 1fr) !important;
+      }
+    }
+
+    @media (max-width: 768px) {
+      section {
+        padding-left: 24px !important;
+        padding-right: 24px !important;
+        padding-top: 88px !important;
+        padding-bottom: 88px !important;
+      }
+
+      section#top {
+        padding-top: 100px !important;
+        padding-bottom: 80px !important;
+      }
+
+      .vx-header-inner {
+        padding: 14px 24px !important;
+      }
+
+      .vx-nav-desktop,
+      .vx-cta-desktop {
+        display: none !important;
+      }
+
+      .vx-hamburger {
+        display: inline-flex !important;
+      }
+
+      .vx-footer-grid {
+        grid-template-columns: 1fr !important;
+        gap: 32px !important;
+      }
+
+      footer {
+        padding: 64px 24px 28px !important;
+      }
+    }
+
+    /* Reduced motion */
+    @media (prefers-reduced-motion: reduce) {
+
+      *,
+      *::before,
+      *::after {
+        animation-duration: 0.001ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.001ms !important;
+      }
+
+      html {
+        scroll-behavior: auto;
+      }
+    }
+  </style>
+  <script src="https://unpkg.com/react@18.3.1/umd/react.development.js"
+    integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L"
+    crossorigin="anonymous"></script>
+  <script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js"
+    integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm"
+    crossorigin="anonymous"></script>
+  <script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js"
+    integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y"
+    crossorigin="anonymous"></script>
+</head>
+
+<body>
+  <div id="root"></div>
+
+  <script type="text/babel" src="components/Icons.jsx"></script>
+  <script type="text/babel" src="components/Brand.jsx"></script>
+  <script type="text/babel" src="components/AmbientPattern.jsx"></script>
+  <script type="text/babel" src="components/Reveal.jsx"></script>
+  <script type="text/babel" src="components/Header.jsx"></script>
+  <script type="text/babel" src="components/Hero.jsx"></script>
+  <script type="text/babel" src="components/Sections.jsx"></script>
+  <script type="text/babel" src="components/Misc.jsx"></script>
+  <script type="text/babel" src="components/PortfolioPage.jsx"></script>
+  <script type="text/babel" src="components/AboutPage.jsx"></script>
+
+  <script type="text/babel" data-presets="env,react">
+    const { useState, useEffect } = React;
+
+    function App() {
+      const [contactOpen, setContactOpen] = useState(false);
+      const [menuOpen, setMenuOpen] = useState(false);
+      const [hash, setHash] = useState(window.location.hash);
+
+      useEffect(() => {
+        const onHashChange = () => setHash(window.location.hash);
+        window.addEventListener("hashchange", onHashChange);
+        return () => window.removeEventListener("hashchange", onHashChange);
+      }, []);
+
+      useEffect(() => {
+        if (!hash.startsWith("#/portfolio") && !hash.startsWith("#/nosotros") && hash.length > 1) {
+          const id = hash.replace("#", "");
+          setTimeout(() => {
+            document.getElementById(id)?.scrollIntoView({ behavior: "smooth", block: "start" });
+          }, 50);
+        }
+      }, [hash]);
+
+      const isPortfolioPage = hash.startsWith("#/portfolio");
+      const isAboutPage = hash.startsWith("#/nosotros");
+
+      const portfolio = () => {
+        window.location.hash = "#/portfolio";
+      };
+
+      const homeContent = (
+        <main>
+          <Hero onContact={() => setContactOpen(true)} onPortfolio={portfolio} />
+          <ProblemaSolucion />
+          <Servicios />
+          <PortfolioPreview onAll={portfolio} />
+          <Enfoque />
+          <Proceso />
+          <CTAFinal onContact={() => setContactOpen(true)} />
+        </main>
+      );
+
+      return (
+        <>
+          <Header onContact={() => setContactOpen(true)} onOpenMenu={() => setMenuOpen(true)} />
+          {isPortfolioPage ? (
+            <PortfolioPage onContact={() => setContactOpen(true)} />
+          ) : isAboutPage ? (
+            <AboutPage onContact={() => setContactOpen(true)} />
+          ) : (
+            homeContent
+          )}
+          <Footer />
+          <MobileMenu
+            open={menuOpen}
+            onClose={() => setMenuOpen(false)}
+            onContact={() => setContactOpen(true)}
+          />
+          <ContactModal open={contactOpen} onClose={() => setContactOpen(false)} />
+        </>
+      );
+    }
+
+    ReactDOM.createRoot(document.getElementById("root")).render(<App />);
+  </script>
+</body>
+
+</html>

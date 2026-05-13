@@ -1,0 +1,25 @@
+<svg width="1200" height="300" viewBox="0 0 1200 300" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <g fill="white" transform="translate(100, 60)">
+    <!-- V -->
+    <path d="M0 0L45 120L90 0H72L45 95L18 0H0Z"/>
+    <!-- E (3 horizontal bars) -->
+    <path d="M120 0H195V18H120V0ZM120 51H185V69H120V51ZM120 102H195V120H120V102Z"/>
+    <!-- X -->
+    <path d="M225 0L272 58L225 120H245L282 72L319 120H339L292 58L339 0H319L282 44L245 0H225Z"/>
+    <!-- T -->
+    <path d="M350 0H430V18H400V120H380V18H350V0Z"/>
+    <!-- R -->
+    <path d="M450 0H515C535 0 550 15 550 35C550 52 540 65 525 70L555 120H533L505 72H470V120H450V0ZM470 18V54H515C525 54 532 48 532 35C532 22 525 18 515 18H470Z"/>
+    <!-- A -->
+    <path d="M570 120L615 0L660 120H640L615 30L590 120H570Z"/>
+  </g>
+  <!-- Tagline -->
+  <g transform="translate(100, 240)">
+    <!-- Decorative lines -->
+    <rect x="-20" y="-12" width="40" height="2" fill="#22C55E"/>
+    <text x="40" y="0" fill="white" font-family="Arial, Helvetica, sans-serif" font-weight="bold" font-size="24" letter-spacing="0.15em">
+      TU MARCA, EN LA <tspan fill="#22C55E">DIRECCIÓN CORRECTA</tspan>
+    </text>
+    <rect x="670" y="-12" width="40" height="2" fill="#22C55E"/>
+  </g>
+</svg>
