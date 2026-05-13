@@ -405,9 +405,7 @@ function Footer() {
           {[
             ["Inicio", "#top"],
             ["Nosotros", "#/nosotros"],
-            ["Servicios", "#servicios"],
             ["Portfolio", "#/portfolio"],
-            ["Proceso", "#proceso"],
             ["Contacto", "#contacto"],
           ].map(([l, href]) => (
             <a
@@ -466,20 +464,7 @@ function Footer() {
           >
             <Icon.Instagram size={15} /> @vextra.systems
           </a>
-          <a
-            href="#li"
-            style={{
-              display: "flex",
-              gap: 10,
-              alignItems: "center",
-              fontSize: 14,
-              color: "var(--fg-secondary)",
-              textDecoration: "none",
-              padding: "5px 0",
-            }}
-          >
-            <Icon.Linkedin size={15} /> /vextra
-          </a>
+
         </div>
         <div>
           <div className="eyebrow" style={{ marginBottom: 16 }}>
@@ -592,9 +577,7 @@ function MobileMenu({ open, onClose, onContact }) {
       >
         {[
           ["Nosotros", "#/nosotros"],
-          ["Servicios", "#servicios"],
           ["Portfolio", "#/portfolio"],
-          ["Proceso", "#proceso"],
           ["Contacto", "#contacto"]
         ].map(([l, href], i) => (
           <a

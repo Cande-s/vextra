@@ -14,9 +14,7 @@ function Header({ onContact = () => {}, onOpenMenu = () => {} }) {
   const links = [
     ["Inicio", "#top"],
     ["Nosotros", "#/nosotros"],
-    ["Servicios", "#servicios"],
     ["Portfolio", "#/portfolio"],
-    ["Proceso", "#proceso"],
     ["Contacto", "#contacto"],
   ];
 
