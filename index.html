@@ -6,10 +6,10 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>VEXTRA — Estudio digital</title>
   <meta name="description"
-    content="VEXTRA — Estudio digital. Diseñamos y desarrollamos soluciones digitales personalizadas para que tu negocio crezca sin atajos ni plantillas." />
+    content="VEXTRA — Estudio digital. Diseñamos y desarrollamos soluciones digitales personalizadas para que tu negocio crezca, pieza por pieza, sin plantillas." />
   <link rel="stylesheet" href="colors_and_type.css" />
   <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400..900&display=swap" rel="stylesheet">
-  <link rel="icon" type="image/png" href="vextrasinfondo.png" />
+  <link rel="icon" type="image/png" href="uploads/logo%20vextra.png" />
   <style>
     body {
       margin: 0;
@@ -226,16 +226,17 @@
 <body>
   <div id="root"></div>
 
-  <script type="text/babel" src="components/Icons.jsx"></script>
-  <script type="text/babel" src="components/Brand.jsx"></script>
-  <script type="text/babel" src="components/AmbientPattern.jsx"></script>
-  <script type="text/babel" src="components/Reveal.jsx"></script>
-  <script type="text/babel" src="components/Header.jsx"></script>
-  <script type="text/babel" src="components/Hero.jsx"></script>
-  <script type="text/babel" src="components/Sections.jsx"></script>
-  <script type="text/babel" src="components/Misc.jsx"></script>
-  <script type="text/babel" src="components/PortfolioPage.jsx"></script>
-  <script type="text/babel" src="components/AboutPage.jsx"></script>
+  <script type="text/babel" src="components/Icons.jsx?v=2"></script>
+  <script type="text/babel" src="components/Brand.jsx?v=2"></script>
+  <script type="text/babel" src="components/AmbientPattern.jsx?v=2"></script>
+  <script type="text/babel" src="components/Reveal.jsx?v=2"></script>
+  <script type="text/babel" src="components/Header.jsx?v=2"></script>
+  <script type="text/babel" src="components/Hero.jsx?v=2"></script>
+  <script type="text/babel" src="components/Sections.jsx?v=2"></script>
+  <script type="text/babel" src="components/Misc.jsx?v=2"></script>
+  <script type="text/babel" src="components/Playground.jsx?v=2"></script>
+  <script type="text/babel" src="components/PortfolioPage.jsx?v=2"></script>
+  <script type="text/babel" src="components/AboutPage.jsx?v=2"></script>
 
   <script type="text/babel" data-presets="env,react">
     const { useState, useEffect } = React;
@@ -257,11 +258,14 @@
           setTimeout(() => {
             document.getElementById(id)?.scrollIntoView({ behavior: "smooth", block: "start" });
           }, 50);
+        } else if (hash.startsWith("#/portfolio") || hash.startsWith("#/nosotros") || hash === "" || hash === "#") {
+          window.scrollTo({ top: 0, behavior: "smooth" });
         }
       }, [hash]);
 
       const isPortfolioPage = hash.startsWith("#/portfolio");
       const isAboutPage = hash.startsWith("#/nosotros");
+      const pageKey = isPortfolioPage ? "portfolio" : isAboutPage ? "about" : "home";
 
       const portfolio = () => {
         window.location.hash = "#/portfolio";
@@ -274,6 +278,7 @@
           <Servicios />
           <PortfolioPreview onAll={portfolio} />
           <Enfoque />
+          <Playground />
           <Proceso />
           <CTAFinal onContact={() => setContactOpen(true)} />
         </main>
@@ -282,13 +287,15 @@
       return (
         <>
           <Header onContact={() => setContactOpen(true)} onOpenMenu={() => setMenuOpen(true)} />
-          {isPortfolioPage ? (
-            <PortfolioPage onContact={() => setContactOpen(true)} />
-          ) : isAboutPage ? (
-            <AboutPage onContact={() => setContactOpen(true)} />
-          ) : (
-            homeContent
-          )}
+          <div key={pageKey} className="page-transition">
+            {isPortfolioPage ? (
+              <PortfolioPage onContact={() => setContactOpen(true)} />
+            ) : isAboutPage ? (
+              <AboutPage onContact={() => setContactOpen(true)} />
+            ) : (
+              homeContent
+            )}
+          </div>
           <Footer />
           <MobileMenu
             open={menuOpen}

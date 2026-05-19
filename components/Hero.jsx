@@ -70,7 +70,7 @@ function Hero({ onContact, onPortfolio }) {
             }}
           >
             Diseñamos y desarrollamos soluciones digitales personalizadas para
-            que tu negocio crezca sin atajos ni plantillas.
+            que tu negocio crezca, pieza por pieza, sin plantillas.
           </p>
         </Reveal>
 
@@ -105,9 +105,9 @@ function Hero({ onContact, onPortfolio }) {
             }}
           >
             {[
-              ["6 sem", "tiempo medio de entrega"],
+              ["8 semanas", "tiempo medio de entrega"],
               ["100%", "código y diseño propio"],
-              ["< 24 hs", "respondemos consultas"],
+              ["24 hs", "respondemos consultas"],
             ].map(([n, l]) => (
               <div key={l} style={{ minWidth: 160 }}>
                 <div

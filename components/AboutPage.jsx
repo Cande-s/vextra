@@ -31,7 +31,7 @@ function AboutPage({ onContact }) {
             >
               LA BASE DE TODO ES <span style={{ color: "var(--accent-action)" }}>LA DIRECCIÓN.</span>
             </h1>
-            
+
             <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(300px, 1fr))", gap: 64, marginTop: 80 }}>
               <div>
                 <h3 style={{ fontSize: 24, fontWeight: 500, color: "var(--fg-primary)", marginBottom: 16 }}>¿Qué es Vextra?</h3>
@@ -42,11 +42,91 @@ function AboutPage({ onContact }) {
               <div>
                 <h3 style={{ fontSize: 24, fontWeight: 500, color: "var(--fg-primary)", marginBottom: 16 }}>¿Por qué Vextra?</h3>
                 <p style={{ fontSize: 18, color: "var(--fg-secondary)", lineHeight: 1.6 }}>
-                  Nuestro nombre nace del concepto matemático de <strong style={{ color: "var(--fg-primary)", fontWeight: 500 }}>Vector</strong>. Un vector no solo tiene magnitud, tiene una <em>dirección</em>. 
+                  Nuestro nombre nace del concepto matemático de <strong style={{ color: "var(--fg-primary)", fontWeight: 500 }}>Vector</strong>. Un vector no solo tiene magnitud, tiene una <em>dirección</em>.
                   <br /><br />
                   En Vextra, creemos firmemente que las marcas que colaboran con nosotros necesitan exactamente eso: un norte claro. La tecnología sin un objetivo es solo código; la tecnología orientada al éxito es el diferencial que buscamos aportar a cada cliente.
                 </p>
               </div>
+            </div>
+          </Reveal>
+        </div>
+      </section>
+
+      {/* MITOS VS REALIDAD */}
+      <section
+        style={{
+          padding: "80px 48px",
+          position: "relative",
+          background: "var(--bg-elevated)",
+          borderTop: "1px solid var(--border-subtle)",
+          borderBottom: "1px solid var(--border-subtle)",
+        }}
+      >
+        <div style={{ maxWidth: 1200, margin: "0 auto", position: "relative" }}>
+          <Reveal>
+            <div className="eyebrow" style={{ marginBottom: 20, color: "var(--accent-action)" }}>Educación Visual</div>
+            <h2
+              style={{
+                fontSize: "clamp(32px, 5vw, 48px)",
+                fontWeight: 500,
+                letterSpacing: "-0.02em",
+                color: "var(--fg-primary)",
+                marginBottom: 64,
+              }}
+            >
+              ¿Por qué a medida?
+            </h2>
+
+            <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(300px, 1fr))", gap: 32 }}>
+
+              {/* Item 1 */}
+              <div style={{ background: "var(--bg-base)", padding: 32, borderRadius: "var(--radius-md)", border: "1px solid var(--border-subtle)", transition: "transform 200ms ease, border-color 200ms ease", cursor: "default" }} onMouseOver={(e) => { e.currentTarget.style.transform = "translateY(-4px)"; e.currentTarget.style.borderColor = "var(--accent-action)" }} onMouseOut={(e) => { e.currentTarget.style.transform = "translateY(0)"; e.currentTarget.style.borderColor = "var(--border-subtle)" }}>
+                <div style={{ display: "flex", alignItems: "center", gap: 12, marginBottom: 24 }}>
+                  <Icon.Zap size={24} color="var(--accent-action)" />
+                  <h3 style={{ fontSize: 20, fontWeight: 500, margin: 0, color: "var(--fg-primary)" }}>SEO y Rendimiento</h3>
+                </div>
+                <div style={{ marginBottom: 16 }}>
+                  <span style={{ fontSize: 13, textTransform: "uppercase", letterSpacing: "0.1em", color: "var(--error)", fontWeight: 600 }}>En Plantilla:</span>
+                  <p style={{ fontSize: 15, color: "var(--fg-secondary)", marginTop: 4, lineHeight: 1.5 }}>Código inflado, carga lenta y SEO limitado por plugins genéricos que nadie necesita.</p>
+                </div>
+                <div>
+                  <span style={{ fontSize: 13, textTransform: "uppercase", letterSpacing: "0.1em", color: "var(--success)", fontWeight: 600 }}>En Vextra:</span>
+                  <p style={{ fontSize: 15, color: "var(--fg-primary)", marginTop: 4, lineHeight: 1.5 }}>Código limpio y semántico. Tiempos de carga ultrarrápidos (&lt; 1s) e indexación perfecta.</p>
+                </div>
+              </div>
+
+              {/* Item 2 */}
+              <div style={{ background: "var(--bg-base)", padding: 32, borderRadius: "var(--radius-md)", border: "1px solid var(--border-subtle)", transition: "transform 200ms ease, border-color 200ms ease", cursor: "default" }} onMouseOver={(e) => { e.currentTarget.style.transform = "translateY(-4px)"; e.currentTarget.style.borderColor = "var(--accent-action)" }} onMouseOut={(e) => { e.currentTarget.style.transform = "translateY(0)"; e.currentTarget.style.borderColor = "var(--border-subtle)" }}>
+                <div style={{ display: "flex", alignItems: "center", gap: 12, marginBottom: 24 }}>
+                  <Icon.Layout size={24} color="var(--accent-action)" />
+                  <h3 style={{ fontSize: 20, fontWeight: 500, margin: 0, color: "var(--fg-primary)" }}>Diseño e Identidad</h3>
+                </div>
+                <div style={{ marginBottom: 16 }}>
+                  <span style={{ fontSize: 13, textTransform: "uppercase", letterSpacing: "0.1em", color: "var(--error)", fontWeight: 600 }}>En Plantilla:</span>
+                  <p style={{ fontSize: 15, color: "var(--fg-secondary)", marginTop: 4, lineHeight: 1.5 }}>Tu sitio termina viéndose idéntico al de cientos de competidores en la industria.</p>
+                </div>
+                <div>
+                  <span style={{ fontSize: 13, textTransform: "uppercase", letterSpacing: "0.1em", color: "var(--success)", fontWeight: 600 }}>En Vextra:</span>
+                  <p style={{ fontSize: 15, color: "var(--fg-primary)", marginTop: 4, lineHeight: 1.5 }}>Identidad visual 100% única y diferenciadora diseñada específicamente para tu marca.</p>
+                </div>
+              </div>
+
+              {/* Item 3 */}
+              <div style={{ background: "var(--bg-base)", padding: 32, borderRadius: "var(--radius-md)", border: "1px solid var(--border-subtle)", transition: "transform 200ms ease, border-color 200ms ease", cursor: "default" }} onMouseOver={(e) => { e.currentTarget.style.transform = "translateY(-4px)"; e.currentTarget.style.borderColor = "var(--accent-action)" }} onMouseOut={(e) => { e.currentTarget.style.transform = "translateY(0)"; e.currentTarget.style.borderColor = "var(--border-subtle)" }}>
+                <div style={{ display: "flex", alignItems: "center", gap: 12, marginBottom: 24 }}>
+                  <Icon.TrendingUp size={24} color="var(--accent-action)" />
+                  <h3 style={{ fontSize: 20, fontWeight: 500, margin: 0, color: "var(--fg-primary)" }}>Escalabilidad</h3>
+                </div>
+                <div style={{ marginBottom: 16 }}>
+                  <span style={{ fontSize: 13, textTransform: "uppercase", letterSpacing: "0.1em", color: "var(--error)", fontWeight: 600 }}>En Plantilla:</span>
+                  <p style={{ fontSize: 15, color: "var(--fg-secondary)", marginTop: 4, lineHeight: 1.5 }}>Estás atrapado en las limitaciones del tema. Agregar nuevas funciones rompe la web.</p>
+                </div>
+                <div>
+                  <span style={{ fontSize: 13, textTransform: "uppercase", letterSpacing: "0.1em", color: "var(--success)", fontWeight: 600 }}>En Vextra:</span>
+                  <p style={{ fontSize: 15, color: "var(--fg-primary)", marginTop: 4, lineHeight: 1.5 }}>Arquitectura flexible. Tu plataforma crece, muta y evoluciona junto con tu negocio.</p>
+                </div>
+              </div>
+
             </div>
           </Reveal>
         </div>
@@ -77,18 +157,18 @@ function AboutPage({ onContact }) {
                   gap: 16,
                 }}
               >
-                ¿Quién está detrás de 
-                <img 
-                  src="vextra logo completo.png" 
-                  alt="VEXTRA" 
-                  style={{ height: 40, width: "auto", display: "inline-block", transform: "translateY(4px)" }} 
+                ¿Quién está detrás de
+                <img
+                  src="uploads/vextra logo completo.png"
+                  alt="VEXTRA"
+                  style={{ height: 40, width: "auto", display: "inline-block", transform: "translateY(4px)" }}
                 />
                 ?
               </h2>
             </div>
 
             <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(320px, 1fr))", gap: 32 }}>
-              
+
               {/* Candela */}
               <div
                 style={{

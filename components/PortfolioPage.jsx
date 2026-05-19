@@ -17,7 +17,7 @@ const CASE_STUDIES = [
     quote: "La web refleja exactamente lo que somos y lo que queremos transmitir a nuestros clientes.",
     quoteBy: "Equipo FINA",
     link: "https://fina-bar-web.vercel.app/index.html",
-    image: "fina-full.png"
+    image: "uploads/fina-full.png"
   },
   {
     id: "marble", title: "Estudio Marble", tag: "Editorial", year: "2025", duration: "10 semanas",

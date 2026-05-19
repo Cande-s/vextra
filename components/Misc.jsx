@@ -11,7 +11,7 @@ function PortfolioPreview({ onAll }) {
       tags: ["Identidad", "Web", "Contenido"],
       featured: true,
       url: "https://fina-bar-web.vercel.app/index.html",
-      image: "fina-full.png"
+      image: "uploads/fina-full.png"
     },
     {
       name: "Aro Studio",
@@ -117,6 +117,7 @@ function ProjectCard({ name, cat, desc, year, tags = [], featured, large, url, i
         gridTemplateColumns: large ? "1.4fr 1fr" : "1fr",
         transition:
           "border-color 200ms ease, transform 200ms ease, background 200ms ease",
+        transform: hover ? "translateY(-4px)" : "translateY(0)",
       }}
       className={large ? "vx-project-large" : "vx-project"}
     >

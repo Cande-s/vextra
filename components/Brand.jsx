@@ -1,7 +1,7 @@
 function VMark({ size = 32 }) {
   return (
     <img
-      src="vextra logo completo.png"
+      src="uploads/vextra logo completo.png"
       alt="VEXTRA"
       style={{ height: size * 0.5, width: "auto", display: "block", flexShrink: 0 }}
     />
