@@ -37,7 +37,7 @@ function AmbientPattern({
         this.y = Math.random() * canvas.height;
         this.vx = (Math.random() - 0.5) * 0.4; // Very slow movement
         this.vy = (Math.random() - 0.5) * 0.4;
-        this.radius = Math.random() * 1.5 + 0.5;
+        this.radius = Math.random() * 1.8 + 0.8;
         this.baseX = this.x;
         this.baseY = this.y;
       }
@@ -69,7 +69,7 @@ function AmbientPattern({
       draw() {
         ctx.beginPath();
         ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
-        ctx.fillStyle = `rgba(198, 138, 97, ${accentOpacity * 1.5})`;
+        ctx.fillStyle = `rgba(198, 138, 97, ${accentOpacity * 2.2})`;
         ctx.fill();
       }
     }
@@ -101,7 +101,8 @@ function AmbientPattern({
             ctx.moveTo(particles[i].x, particles[i].y);
             ctx.lineTo(particles[j].x, particles[j].y);
             const opacity = 1 - (distance / connectionDistance);
-            ctx.strokeStyle = `rgba(198, 138, 97, ${opacity * accentOpacity})`;
+            ctx.lineWidth = 1.2;
+            ctx.strokeStyle = `rgba(198, 138, 97, ${opacity * accentOpacity * 1.8})`;
             ctx.stroke();
           }
         }

@@ -13,8 +13,8 @@ function Header({ onContact = () => {}, onOpenMenu = () => {} }) {
 
   const links = [
     ["Inicio", "#top"],
-    ["Nosotros", "#/nosotros"],
     ["Portfolio", "#/portfolio"],
+    ["Nosotros", "#/nosotros"],
     ["Contacto", "#contacto"],
   ];
 
@@ -74,32 +74,16 @@ function Header({ onContact = () => {}, onOpenMenu = () => {} }) {
           ))}
         </nav>
 
-        <button
-          className="vx-cta-desktop"
+        <Button
           onClick={onContact}
           style={{
-            background: "transparent",
-            border: "1px solid var(--border-default)",
-            color: "var(--fg-primary)",
-            fontFamily: "inherit",
+            padding: "10px 18px",
             fontSize: 14,
-            fontWeight: 500,
-            padding: "10px 20px",
-            borderRadius: "var(--radius-md)",
-            cursor: "pointer",
-            transition: "border-color 150ms ease, color 150ms ease, background 150ms ease",
           }}
-          onMouseOver={(e) => {
-            e.currentTarget.style.borderColor = "var(--accent-action)";
-            e.currentTarget.style.color = "var(--accent-action)";
-          }}
-          onMouseOut={(e) => {
-            e.currentTarget.style.borderColor = "var(--border-default)";
-            e.currentTarget.style.color = "var(--fg-primary)";
-          }}
+          className="vx-cta-desktop"
         >
           Solicitar asesoría
-        </button>
+        </Button>
 
         <button
           className="vx-hamburger"

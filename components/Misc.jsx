@@ -395,8 +395,7 @@ function Footer() {
               lineHeight: 1.6,
             }}
           >
-            Soluciones digitales con dirección. Diseño y desarrollo a medida,
-            desde Río Cuarto.
+            Estudio de diseño y desarrollo web de alto rendimiento. Río Cuarto, Córdoba, Argentina.
           </p>
         </div>
         <div>
@@ -405,8 +404,8 @@ function Footer() {
           </div>
           {[
             ["Inicio", "#top"],
-            ["Nosotros", "#/nosotros"],
             ["Portfolio", "#/portfolio"],
+            ["Nosotros", "#/nosotros"],
             ["Contacto", "#contacto"],
           ].map(([l, href]) => (
             <a
@@ -450,7 +449,7 @@ function Footer() {
             <Icon.Mail size={15} /> vextrasystems@gmail.com
           </a>
           <a
-            href="https://www.instagram.com/vextra.systems"
+            href="https://www.instagram.com/vextra_systems"
             target="_blank"
             rel="noopener noreferrer"
             style={{
@@ -463,7 +462,7 @@ function Footer() {
               padding: "5px 0",
             }}
           >
-            <Icon.Instagram size={15} /> @vextra.systems
+            <Icon.Instagram size={15} /> @vextra_systems
           </a>
 
         </div>
@@ -509,20 +508,12 @@ function Footer() {
           fontSize: 12,
           color: "var(--fg-muted)",
           display: "flex",
-          justifyContent: "space-between",
+          justifyContent: "center",
           flexWrap: "wrap",
           gap: 12,
         }}
       >
         <div>© 2026 VEXTRA — Todos los derechos reservados.</div>
-        <div style={{ display: "flex", gap: 20 }}>
-          <a href="#privacidad" style={{ color: "var(--fg-muted)" }}>
-            Privacidad
-          </a>
-          <a href="#terminos" style={{ color: "var(--fg-muted)" }}>
-            Términos
-          </a>
-        </div>
       </div>
     </footer>
   );
@@ -577,8 +568,8 @@ function MobileMenu({ open, onClose, onContact }) {
         }}
       >
         {[
-          ["Nosotros", "#/nosotros"],
           ["Portfolio", "#/portfolio"],
+          ["Nosotros", "#/nosotros"],
           ["Contacto", "#contacto"]
         ].map(([l, href], i) => (
           <a
@@ -616,25 +607,52 @@ function MobileMenu({ open, onClose, onContact }) {
   );
 }
 
+
 function ContactModal({ open, onClose }) {
-  const [state, setState] = React.useState("idle");
+  const [state, setState] = React.useState("idle"); // "idle", "success"
+  const [mode, setMode] = React.useState("simple"); // "simple", "briefing"
+
   const [form, setForm] = React.useState({
     nombre: "",
     negocio: "",
     email: "",
     mensaje: "",
   });
+
+  const [briefing, setBriefing] = React.useState({
+    empresa: "", dedica: "", objetivo: "", publico: "",
+    identidad: "", personalidad: "", colores: "", referencias: "", noQuieren: "",
+    secciones: "",
+    funcEcommerce: false, funcReservas: false, funcFormularios: false, funcRegistro: false, funcBuscador: false, funcChat: false, funcPagos: false,
+    integraciones: "", idiomas: "",
+    textos: "", fotos: "", blog: "",
+    hosting: "", tecnologia: "", seo: "", mantenimiento: "",
+    presupuesto: "", fecha: ""
+  });
+
   React.useEffect(() => {
     if (open) {
       setState("idle");
+      setMode("simple");
+      // Reseteamos los forms al abrir
       setForm({ nombre: "", negocio: "", email: "", mensaje: "" });
+      setBriefing({
+        empresa: "", dedica: "", objetivo: "", publico: "",
+        identidad: "", personalidad: "", colores: "", referencias: "", noQuieren: "",
+        secciones: "",
+        funcEcommerce: false, funcReservas: false, funcFormularios: false, funcRegistro: false, funcBuscador: false, funcChat: false, funcPagos: false,
+        integraciones: "", idiomas: "",
+        textos: "", fotos: "", blog: "",
+        hosting: "", tecnologia: "", seo: "", mantenimiento: "",
+        presupuesto: "", fecha: ""
+      });
     }
   }, [open]);
 
   if (!open) return null;
-  const submit = (e) => {
-    e.preventDefault();
 
+  const submitSimple = (e) => {
+    e.preventDefault();
     const subject = encodeURIComponent(`Nuevo proyecto de ${form.nombre} — VEXTRA`);
     const body = encodeURIComponent(
       `Nombre: ${form.nombre}\n` +
@@ -642,25 +660,90 @@ function ContactModal({ open, onClose }) {
       `Negocio/Marca: ${form.negocio || "No especificado"}\n\n` +
       `Mensaje:\n${form.mensaje}`
     );
-
     window.location.href = `mailto:vextrasystems@gmail.com?subject=${subject}&body=${body}`;
-
-    // Mostramos estado de éxito después de abrir el mailto
     setState("success");
   };
+
+  const submitBriefing = (e) => {
+    e.preventDefault();
+    const subject = encodeURIComponent(`Briefing Completo: ${briefing.empresa} — VEXTRA`);
+    
+    const funcs = [];
+    if(briefing.funcEcommerce) funcs.push("E-commerce");
+    if(briefing.funcReservas) funcs.push("Reservas");
+    if(briefing.funcFormularios) funcs.push("Formularios complejos");
+    if(briefing.funcRegistro) funcs.push("Registro de usuarios");
+    if(briefing.funcBuscador) funcs.push("Buscador interno");
+    if(briefing.funcChat) funcs.push("Chat/WhatsApp");
+    if(briefing.funcPagos) funcs.push("Pasarelas de pago");
+
+    const body = encodeURIComponent(
+      `--- 1. Información General y Objetivos ---\n` +
+      `Empresa: ${briefing.empresa}\n` +
+      `A qué se dedica y problema: ${briefing.dedica}\n` +
+      `Objetivo principal: ${briefing.objetivo}\n` +
+      `Público objetivo: ${briefing.publico}\n\n` +
+      
+      `--- 2. Identidad de Marca y Estética ---\n` +
+      `Identidad visual actual: ${briefing.identidad}\n` +
+      `Personalidad (3 palabras): ${briefing.personalidad}\n` +
+      `Paleta de colores: ${briefing.colores}\n` +
+      `Sitios de referencia: ${briefing.referencias}\n` +
+      `Qué NO quieren ver: ${briefing.noQuieren}\n\n` +
+      
+      `--- 3. Funcionalidad y Herramientas ---\n` +
+      `Secciones básicas: ${briefing.secciones}\n` +
+      `Funcionalidades requeridas: ${funcs.length > 0 ? funcs.join(', ') : 'Ninguna específica'}\n` +
+      `Integraciones externas: ${briefing.integraciones}\n` +
+      `Idiomas: ${briefing.idiomas}\n\n` +
+      
+      `--- 4. Contenido y Materiales ---\n` +
+      `Textos/Copywriting: ${briefing.textos}\n` +
+      `Fotografías y videos: ${briefing.fotos}\n` +
+      `Blog/Noticias: ${briefing.blog}\n\n` +
+      
+      `--- 5. Aspectos Técnicos y Logística ---\n` +
+      `Dominio y Hosting: ${briefing.hosting}\n` +
+      `Tecnología preferida: ${briefing.tecnologia}\n` +
+      `Importancia SEO: ${briefing.seo}\n` +
+      `Mantenimiento: ${briefing.mantenimiento}\n\n` +
+      
+      `--- 6. Presupuesto y Tiempos ---\n` +
+      `Presupuesto estimado: ${briefing.presupuesto}\n` +
+      `Fecha de lanzamiento: ${briefing.fecha}`
+    );
+    
+    window.location.href = `mailto:vextrasystems@gmail.com?subject=${subject}&body=${body}`;
+    setState("success");
+  };
+
+  // Prevenir cierre accidental si están llenando el briefing largo
+  const handleBackgroundClick = () => {
+    if (mode === "briefing") {
+      if (window.confirm("¿Seguro que quieres cerrar? Perderás los datos ingresados en el briefing.")) {
+        onClose();
+      }
+    } else {
+      onClose();
+    }
+  };
+
+  const updateB = (key, val) => setBriefing(prev => ({ ...prev, [key]: val }));
+
   return (
     <div
-      onClick={onClose}
+      onClick={handleBackgroundClick}
       style={{
         position: "fixed",
         inset: 0,
         background: "rgba(0,0,0,0.65)",
         backdropFilter: "blur(10px)",
         display: "flex",
-        alignItems: "center",
+        alignItems: mode === "briefing" ? "flex-start" : "center",
         justifyContent: "center",
-        padding: 24,
+        padding: mode === "briefing" ? "40px 24px" : 24,
         zIndex: 200,
+        overflowY: mode === "briefing" ? "auto" : "hidden",
         animation: "vx-fade-in 200ms ease-out",
       }}
     >
@@ -668,17 +751,18 @@ function ContactModal({ open, onClose }) {
         onClick={(e) => e.stopPropagation()}
         style={{
           width: "100%",
-          maxWidth: 540,
+          maxWidth: mode === "briefing" ? 800 : 540,
           background: "var(--bg-elevated)",
           border: "1px solid var(--border-subtle)",
           borderRadius: "var(--radius-lg)",
-          padding: 36,
+          padding: mode === "briefing" ? 48 : 36,
           position: "relative",
           animation: "vx-modal-in 240ms cubic-bezier(.2,.7,.2,1)",
+          boxSizing: "border-box",
         }}
       >
         <button
-          onClick={onClose}
+          onClick={handleBackgroundClick}
           aria-label="Cerrar"
           style={{
             position: "absolute",
@@ -693,20 +777,14 @@ function ContactModal({ open, onClose }) {
         >
           <Icon.X size={18} />
         </button>
+
         {state === "success" ? (
           <div style={{ paddingTop: 8 }}>
             <Icon.CheckCircle size={36} color="var(--accent-action)" />
             <h3 style={{ fontSize: 24, fontWeight: 600, marginTop: 18, letterSpacing: "-0.01em" }}>
               Abrimos tu aplicación de mail.
             </h3>
-            <p
-              style={{
-                fontSize: 15,
-                color: "var(--fg-secondary)",
-                marginTop: 10,
-                lineHeight: 1.6,
-              }}
-            >
+            <p style={{ fontSize: 15, color: "var(--fg-secondary)", marginTop: 10, lineHeight: 1.6 }}>
               Ya preparamos el mensaje con tus datos. Solo tenés que darle a "Enviar" en tu aplicación de mail para que nos llegue.
             </p>
             <div style={{ marginTop: 28 }}>
@@ -715,73 +793,134 @@ function ContactModal({ open, onClose }) {
               </Button>
             </div>
           </div>
-        ) : (
-          <form onSubmit={submit}>
-            <div className="eyebrow" style={{ marginBottom: 12 }}>
-              Contacto
-            </div>
-            <h3
-              style={{
-                fontSize: 24,
-                fontWeight: 600,
-                letterSpacing: "-0.01em",
-                margin: 0,
-              }}
-            >
+        ) : mode === "simple" ? (
+          <form onSubmit={submitSimple}>
+            <div className="eyebrow" style={{ marginBottom: 12 }}>Contacto</div>
+            <h3 style={{ fontSize: 24, fontWeight: 600, letterSpacing: "-0.01em", margin: 0 }}>
               Contanos sobre tu proyecto.
             </h3>
-            <p
-              style={{
-                fontSize: 14,
-                color: "var(--fg-secondary)",
-                marginTop: 8,
-                lineHeight: 1.6,
-              }}
-            >
+            <p style={{ fontSize: 14, color: "var(--fg-secondary)", marginTop: 8, lineHeight: 1.6 }}>
               Sin compromiso. Te respondemos en menos de 24 hs hábiles.
             </p>
+            
             <div style={{ display: "grid", gap: 14, marginTop: 24 }}>
-              <Field
-                label="Nombre"
-                required
-                value={form.nombre}
-                placeholder="Tu nombre"
-                onChange={(v) => setForm({ ...form, nombre: v })}
-              />
-              <Field
-                label="Negocio o marca"
-                value={form.negocio}
-                placeholder="Nombre de tu negocio"
-                onChange={(v) => setForm({ ...form, negocio: v })}
-              />
-              <Field
-                label="Email"
-                type="email"
-                required
-                value={form.email}
-                placeholder="[EMAIL_ADDRESS]"
-                onChange={(v) => setForm({ ...form, email: v })}
-              />
-              <Field
-                label="¿En qué podemos ayudarte?"
-                textarea
-                required
-                value={form.mensaje}
-                placeholder="Describí brevemente qué proyecto tenés en mente"
-                onChange={(v) => setForm({ ...form, mensaje: v })}
-              />
+              <Field label="Tu nombre" required value={form.nombre} onChange={(v) => setForm({ ...form, nombre: v })} />
+              <Field label="Email" type="email" required value={form.email} onChange={(v) => setForm({ ...form, email: v })} />
+              <Field label="¿En qué podemos ayudarte?" textarea required value={form.mensaje} onChange={(v) => setForm({ ...form, mensaje: v })} />
             </div>
-            <div
-              style={{
-                marginTop: 24,
-                display: "flex",
-                gap: 12,
-                alignItems: "center",
-                flexWrap: "wrap",
-              }}
-            >
+
+            <div style={{ marginTop: 24, display: "flex", flexDirection: "column", gap: 16 }}>
+              <Button type="submit" style={{ width: "100%", justifyContent: "center" }}>
+                Enviar mensaje rápido
+                <Icon.ArrowRight size={16} style={{ marginLeft: 4 }} />
+              </Button>
+              <div style={{ display: "flex", alignItems: "center", gap: 16 }}>
+                <div style={{ flex: 1, height: 1, background: "var(--border-subtle)" }} />
+                <span style={{ fontSize: 12, color: "var(--fg-muted)", textTransform: "uppercase", letterSpacing: "0.1em" }}>O SI PREFIERES</span>
+                <div style={{ flex: 1, height: 1, background: "var(--border-subtle)" }} />
+              </div>
+              <Button variant="secondary" onClick={() => setMode("briefing")} style={{ width: "100%", justifyContent: "center" }}>
+                Completar Briefing Detallado
+              </Button>
+            </div>
+          </form>
+        ) : (
+          <form onSubmit={submitBriefing}>
+            <div className="eyebrow" style={{ marginBottom: 12 }}>Briefing Completo</div>
+            <h3 style={{ fontSize: 28, fontWeight: 600, letterSpacing: "-0.01em", margin: 0 }}>
+              Cuestionario de Proyecto Web
+            </h3>
+            <p style={{ fontSize: 15, color: "var(--fg-secondary)", marginTop: 8, lineHeight: 1.6, marginBottom: 32 }}>
+              Al completar esta información nos ayudas a entender perfectamente lo que necesitas para poder darte una cotización y propuesta exacta.
+            </p>
+
+            <div style={{ display: "flex", flexDirection: "column", gap: 40 }}>
+              
+              {/* Sección 1 */}
+              <div>
+                <h4 style={{ fontSize: 18, color: "var(--accent-action)", margin: "0 0 16px 0", fontWeight: 500 }}>1. Información General y Objetivos</h4>
+                <div style={{ display: "grid", gap: 16 }}>
+                  <Field label="Nombre de la empresa/proyecto" required value={briefing.empresa} onChange={(v) => updateB("empresa", v)} />
+                  <Field label="¿A qué se dedica y qué problema busca resolver la web?" textarea required value={briefing.dedica} onChange={(v) => updateB("dedica", v)} />
+                  <Field label="¿Cuál es el objetivo principal? (Vender, leads, informar, comunidad...)" textarea required value={briefing.objetivo} onChange={(v) => updateB("objetivo", v)} />
+                  <Field label="¿Quién es el público objetivo? (Edad, intereses, ubicación)" textarea required value={briefing.publico} onChange={(v) => updateB("publico", v)} />
+                </div>
+              </div>
+
+              {/* Sección 2 */}
+              <div>
+                <h4 style={{ fontSize: 18, color: "var(--accent-action)", margin: "0 0 16px 0", fontWeight: 500 }}>2. Identidad de Marca y Estética</h4>
+                <div style={{ display: "grid", gap: 16 }}>
+                  <Field label="¿Cuentan con identidad visual (logo, manual, tipografías)?" value={briefing.identidad} onChange={(v) => updateB("identidad", v)} />
+                  <Field label="Si tuvieras que describir la web en 3 palabras, ¿cuáles serían?" value={briefing.personalidad} onChange={(v) => updateB("personalidad", v)} />
+                  <Field label="¿Qué paleta de colores tienen en mente?" value={briefing.colores} onChange={(v) => updateB("colores", v)} />
+                  <Field label="¿Sitios web de referencia que les gusten? (Indica por qué)" textarea value={briefing.referencias} onChange={(v) => updateB("referencias", v)} />
+                  <Field label="¿Hay algo que definitivamente NO quieran ver en el diseño?" textarea value={briefing.noQuieren} onChange={(v) => updateB("noQuieren", v)} />
+                </div>
+              </div>
+
+              {/* Sección 3 */}
+              <div>
+                <h4 style={{ fontSize: 18, color: "var(--accent-action)", margin: "0 0 16px 0", fontWeight: 500 }}>3. Funcionalidad y Herramientas</h4>
+                <div style={{ display: "grid", gap: 16 }}>
+                  <Field label="¿Qué secciones básicas necesita? (Ej: Inicio, Servicios, Blog...)" textarea required value={briefing.secciones} onChange={(v) => updateB("secciones", v)} />
+                  
+                  <div>
+                    <span style={{ fontSize: 13, fontWeight: 500, color: "var(--fg-primary)", display: "block", marginBottom: 12 }}>¿Necesita funcionalidades específicas?</span>
+                    <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(200px, 1fr))", gap: 12 }}>
+                      <Checkbox label="Carrito / E-commerce" checked={briefing.funcEcommerce} onChange={(c) => updateB("funcEcommerce", c)} />
+                      <Checkbox label="Sistema de reservas" checked={briefing.funcReservas} onChange={(c) => updateB("funcReservas", c)} />
+                      <Checkbox label="Formularios complejos" checked={briefing.funcFormularios} onChange={(c) => updateB("funcFormularios", c)} />
+                      <Checkbox label="Registro de usuarios" checked={briefing.funcRegistro} onChange={(c) => updateB("funcRegistro", c)} />
+                      <Checkbox label="Buscador interno" checked={briefing.funcBuscador} onChange={(c) => updateB("funcBuscador", c)} />
+                      <Checkbox label="Chat / WhatsApp" checked={briefing.funcChat} onChange={(c) => updateB("funcChat", c)} />
+                      <Checkbox label="Pasarelas de pago" checked={briefing.funcPagos} onChange={(c) => updateB("funcPagos", c)} />
+                    </div>
+                  </div>
+
+                  <Field label="¿Integración con herramientas externas? (CRM, Analytics, Pixel...)" value={briefing.integraciones} onChange={(v) => updateB("integraciones", v)} />
+                  <Field label="¿En cuántos idiomas debe estar disponible?" value={briefing.idiomas} onChange={(v) => updateB("idiomas", v)} />
+                </div>
+              </div>
+
+              {/* Sección 4 */}
+              <div>
+                <h4 style={{ fontSize: 18, color: "var(--accent-action)", margin: "0 0 16px 0", fontWeight: 500 }}>4. Contenido y Materiales</h4>
+                <div style={{ display: "grid", gap: 16 }}>
+                  <Field label="¿Quién se encargará de los textos (copywriting)?" value={briefing.textos} onChange={(v) => updateB("textos", v)} />
+                  <Field label="¿Cuentan con fotos/videos o usaremos imágenes de stock?" value={briefing.fotos} onChange={(v) => updateB("fotos", v)} />
+                  <Field label="¿Necesitan un blog o sección de noticias autogestionable?" value={briefing.blog} onChange={(v) => updateB("blog", v)} />
+                </div>
+              </div>
+
+              {/* Sección 5 */}
+              <div>
+                <h4 style={{ fontSize: 18, color: "var(--accent-action)", margin: "0 0 16px 0", fontWeight: 500 }}>5. Aspectos Técnicos y Logística</h4>
+                <div style={{ display: "grid", gap: 16 }}>
+                  <Field label="¿Ya tienen dominio y hosting? (Indicar proveedor si aplica)" value={briefing.hosting} onChange={(v) => updateB("hosting", v)} />
+                  <Field label="¿Preferencia tecnológica? (Desarrollo a medida, React, WP...)" value={briefing.tecnologia} onChange={(v) => updateB("tecnologia", v)} />
+                  <Field label="¿Qué tan importante es el posicionamiento SEO para el lanzamiento?" value={briefing.seo} onChange={(v) => updateB("seo", v)} />
+                  <Field label="¿Quién se encargará del mantenimiento técnico una vez lanzada?" value={briefing.mantenimiento} onChange={(v) => updateB("mantenimiento", v)} />
+                </div>
+              </div>
+
+              {/* Sección 6 */}
+              <div>
+                <h4 style={{ fontSize: 18, color: "var(--accent-action)", margin: "0 0 16px 0", fontWeight: 500 }}>6. Presupuesto y Tiempos</h4>
+                <div style={{ display: "grid", gap: 16 }}>
+                  <Field label="¿Cuál es el presupuesto estimado? (Ayuda a priorizar)" required value={briefing.presupuesto} onChange={(v) => updateB("presupuesto", v)} />
+                  <Field label="¿Tienen una fecha de lanzamiento deseada?" required value={briefing.fecha} onChange={(v) => updateB("fecha", v)} />
+                </div>
+              </div>
+
+            </div>
+
+            <div style={{ marginTop: 40, paddingTop: 24, borderTop: "1px solid var(--border-subtle)", display: "flex", justifyContent: "space-between", alignItems: "center" }}>
+              <button type="button" onClick={() => setMode("simple")} style={{ background: "transparent", border: "none", color: "var(--fg-secondary)", cursor: "pointer", fontSize: 14 }}>
+                Volver atrás
+              </button>
               <Button type="submit">
-                Enviar mensaje
+                Enviar Briefing Completo
                 <Icon.ArrowRight size={16} style={{ marginLeft: 4 }} />
               </Button>
             </div>
@@ -789,6 +928,20 @@ function ContactModal({ open, onClose }) {
         )}
       </div>
     </div>
+  );
+}
+
+function Checkbox({ label, checked, onChange }) {
+  return (
+    <label style={{ display: "flex", alignItems: "center", gap: 10, cursor: "pointer" }}>
+      <input 
+        type="checkbox" 
+        checked={checked} 
+        onChange={(e) => onChange(e.target.checked)} 
+        style={{ width: 16, height: 16, accentColor: "var(--accent-action)", cursor: "pointer" }}
+      />
+      <span style={{ fontSize: 14, color: "var(--fg-secondary)" }}>{label}</span>
+    </label>
   );
 }
 

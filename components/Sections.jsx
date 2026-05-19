@@ -164,15 +164,15 @@ const container = { maxWidth: 1200, margin: "0 auto" };
 
 function ProblemaSolucion() {
   const problemaItems = [
-    [Icon.AlertTriangle, "Identidad genérica", "Plantillas prefabricadas que no diferencian a la marca de su competencia."],
-    [Icon.TrendingUp, "Baja conversión", "Tráfico que ingresa al sitio pero lo abandona sin generar oportunidades de negocio."],
-    [Icon.Layers, "Falta de escalabilidad", "A medida que la empresa crece, la plataforma digital queda obsoleta y limita el avance."],
+    [Icon.AlertTriangle, "Identidad invisible", "El sitio web luce igual que el de la competencia, perdiendo la oportunidad de destacar e impactar."],
+    [Icon.TrendingUp, "Visitas sin retorno", "El tráfico ingresa a la página pero la abandona rápidamente sin concretar ventas ni consultas."],
+    [Icon.Layers, "Tecnología obsoleta", "El código antiguo genera errores, ralentiza la carga y limita seriamente el avance comercial."],
   ];
 
   const solucionItems = [
-    [Icon.Compass, "Diseño con propósito", "Cada elemento visual responde a una decisión estratégica, no a una tendencia pasajera."],
-    [Icon.Zap, "Alto rendimiento", "Plataformas optimizadas, veloces y eficientes en cualquier tipo de dispositivo."],
-    [Icon.Target, "Arquitectura escalable", "Infraestructura robusta diseñada para crecer a la par del negocio sin requerir rediseños constantes."],
+    [Icon.Compass, "Estética funcional", "Cada elemento se diseña estratégicamente para guiar al usuario hacia la acción deseada."],
+    [Icon.Zap, "Velocidad extrema", "Sistemas optimizados para cargar en milisegundos, mejorando la retención y el posicionamiento SEO."],
+    [Icon.Target, "Bases sólidas", "Infraestructura moderna preparada para soportar picos de tráfico y la integración de nuevas funciones."],
   ];
 
   return (
@@ -184,7 +184,7 @@ function ProblemaSolucion() {
           
           {/* El Problema */}
           <div>
-            <SectionHeader eyebrow="El problema" title="Su plataforma actual no rinde lo suficiente." />
+            <SectionHeader eyebrow="El problema" title="Los obstáculos comunes de la presencia online." />
             <div style={{ display: "flex", flexDirection: "column", gap: 24 }}>
               {problemaItems.map(([I, t, d], i) => (
                 <PointCard key={t} icon={I} title={t} desc={d} idx={i} />
@@ -196,7 +196,7 @@ function ProblemaSolucion() {
           <div id="solucion">
             <SectionHeader
               eyebrow="La solución"
-              title="Soluciones digitales hechas a medida."
+              title="Desarrollo orientado íntegramente a resultados."
             />
             <div style={{ display: "flex", flexDirection: "column", gap: 24 }}>
               {solucionItems.map(([I, t, d], i) => (
@@ -214,16 +214,16 @@ function ProblemaSolucion() {
 
 function Servicios() {
   const items = [
-    { icon: Icon.Layout, title: "Desarrollo Web", desc: "Plataformas institucionales o de servicios con arquitectura, identidad y contenido a medida." },
-    { icon: Icon.Target, title: "Landing Pages", desc: "Páginas de alta conversión optimizadas para la comercialización de productos, servicios o eventos." },
-    { icon: Icon.RefreshCw, title: "Migración y Rediseño", desc: "Modernización de sitios heredados hacia tecnologías actuales, preservando y mejorando el posicionamiento SEO." },
-    { icon: Icon.Wrench, title: "Mejora Continua", desc: "Monitoreo post-lanzamiento y optimización progresiva basada en el análisis de datos de uso real." },
+    { icon: Icon.Layout, title: "Sitios Corporativos", desc: "Presencia institucional sólida y escalable, conectada con sistemas de gestión de contenido (CMS) intuitivos." },
+    { icon: Icon.Target, title: "Páginas de Conversión", desc: "Embudos de venta altamente persuasivos, ideales para lanzamientos de productos o campañas publicitarias." },
+    { icon: Icon.RefreshCw, title: "Evolución Digital", desc: "Actualizamos interfaces heredadas a tecnologías de vanguardia sin perder el posicionamiento ganado en Google." },
+    { icon: Icon.Wrench, title: "Soporte Activo", desc: "Mantenimiento, auditorías de seguridad y evolución periódica de la plataforma post-lanzamiento." },
   ];
   return (
     <section id="servicios" style={{ ...sectionWrap("var(--bg-base)"), position: "relative", overflow: "hidden" }}>
       <AmbientPattern variant="subtle" accentOpacity={0.07} lineOpacity={0.35} />
       <div style={{ ...container, position: "relative" }}>
-        <SectionHeader eyebrow="Servicios" title="Qué hacemos." />
+        <SectionHeader eyebrow="Servicios" title="Nuestras áreas de especialidad." />
         <div
           style={{
             display: "grid",
@@ -240,9 +240,9 @@ function Servicios() {
 
 function Enfoque() {
   const items = [
-    [Icon.MessageSquare, "Análisis Estratégico", "Comprender el modelo de negocio es el primer paso. Sin esta base, el diseño carece de un propósito real."],
-    [Icon.CheckCircle, "Decisiones Fundamentadas", "Cada elección técnica y visual responde a un objetivo medible, el cual transparentamos en cada etapa."],
-    [Icon.Compass, "Desarrollo a Medida", "Prescindimos de plantillas prefabricadas. Cada plataforma se diseña y desarrolla desde cero."],
+    [Icon.MessageSquare, "Inmersión Total", "Estudiamos a fondo tu industria y competidores antes de proponer la primera línea de código o cambio visual."],
+    [Icon.CheckCircle, "Transparencia Absoluta", "Justificamos activamente cada decisión de diseño basándonos en datos empíricos y nuestra experiencia de usuario."],
+    [Icon.Compass, "Ingeniería Propietaria", "No dependemos de constructores visuales lentos. Programamos de forma nativa para garantizar la máxima calidad técnica."],
   ];
   return (
     <section id="enfoque" style={{ ...sectionWrap("var(--bg-elevated)"), position: "relative", overflow: "hidden" }}>
@@ -277,7 +277,7 @@ function Enfoque() {
               className="eyebrow"
               style={{ marginBottom: 24, color: "var(--fg-secondary)" }}
             >
-              Enfoque
+              Nuestra filosofía
             </div>
             <h2
               style={{
@@ -291,10 +291,10 @@ function Enfoque() {
                 textWrap: "balance",
               }}
             >
-              No desarrollamos sitios genéricos.
+              Artesanía digital aplicada
               <br />
               <span style={{ color: "var(--fg-secondary)" }}>
-                Construimos plataformas adaptadas a cada negocio.
+                a cada pixel de tu nuevo ecosistema.
               </span>
             </h2>
           </div>
@@ -318,16 +318,16 @@ function Enfoque() {
 
 function Proceso() {
   const steps = [
-    ["01", "Análisis Inicial", "Sesión de evaluación para comprender el modelo de negocio, la audiencia y los objetivos comerciales."],
-    ["02", "Propuesta", "Presentación detallada del plan de acción, alcance técnico, plazos de ejecución y presupuesto."],
-    ["03", "Desarrollo", "Fase de diseño y programación con instancias de revisión estructuradas en cada etapa clave."],
-    ["04", "Lanzamiento", "Despliegue de la plataforma, análisis de métricas iniciales y ajustes de optimización continua."],
+    ["01", "Descubrimiento", "Evaluamos tu modelo comercial, mapeamos a tu audiencia clave y establecemos los KPIs del proyecto."],
+    ["02", "Estrategia", "Diseñamos la arquitectura de información, generamos los primeros wireframes y confirmamos el cronograma."],
+    ["03", "Ejecución", "Programamos las interfaces de alta fidelidad con revisiones periódicas para asegurar el control de calidad."],
+    ["04", "Despliegue", "Lanzamos la web al público, monitoreamos la estabilidad en vivo y capacitamos a tu equipo en el uso."],
   ];
   return (
     <section id="proceso" style={{ ...sectionWrap("var(--bg-base)"), position: "relative", overflow: "hidden" }}>
       <AmbientPattern variant="strong" accentOpacity={0.06} lineOpacity={0.4} />
       <div style={{ ...container, position: "relative" }}>
-        <SectionHeader eyebrow="Proceso" title="Cómo trabajamos." />
+        <SectionHeader eyebrow="Metodología" title="De la primera idea al lanzamiento." />
         <div
           style={{
             display: "grid",
@@ -430,7 +430,7 @@ function CTAFinal({ onContact }) {
                   maxWidth: 500,
                 }}
               >
-                Su próximo proyecto digital comienza con una reunión estratégica.
+                Transformemos la presencia digital de tu marca hoy mismo.
               </h2>
             </div>
             <div style={{ flexShrink: 0 }}>

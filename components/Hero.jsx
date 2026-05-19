@@ -69,8 +69,8 @@ function Hero({ onContact, onPortfolio }) {
               maxWidth: 620,
             }}
           >
-            Diseñamos y desarrollamos soluciones digitales personalizadas para
-            que tu negocio crezca, pieza por pieza, sin plantillas.
+            Creamos experiencias web de alto nivel, diseñadas con precisión
+            para impulsar el crecimiento comercial de tu marca.
           </p>
         </Reveal>
 
@@ -143,9 +143,15 @@ function Button({ children, variant = "primary", onClick, type = "button", style
   const [hover, setHover] = React.useState(false);
   const variants = {
     primary: {
-      background: hover ? "var(--accent-hover)" : "var(--accent-action)",
+      background: hover 
+        ? "linear-gradient(135deg, var(--accent-hover) 0%, var(--accent-action) 100%)" 
+        : "linear-gradient(135deg, var(--accent-action) 0%, var(--accent-hover) 100%)",
       color: "var(--bg-base)",
       border: "1px solid transparent",
+      boxShadow: hover 
+        ? "0 8px 24px rgba(198, 138, 97, 0.45), 0 0 0 1px rgba(255, 255, 255, 0.2) inset" 
+        : "0 4px 12px rgba(198, 138, 97, 0.25), 0 0 0 1px rgba(255, 255, 255, 0.1) inset",
+      textShadow: "0 1px 2px rgba(0,0,0,0.15)"
     },
     secondary: {
       background: "transparent",
@@ -171,13 +177,14 @@ function Button({ children, variant = "primary", onClick, type = "button", style
         ...variants[variant],
         fontFamily: "inherit",
         fontSize: 15,
-        fontWeight: 500,
-        padding: "13px 22px",
+        fontWeight: 600,
+        letterSpacing: "0.01em",
+        padding: "13px 26px",
         borderRadius: "var(--radius-md)",
         cursor: "pointer",
         transition:
-          "background 150ms ease, color 150ms ease, border-color 150ms ease, transform 150ms ease",
-        transform: hover && variant === "primary" ? "translateY(-1px)" : "translateY(0)",
+          "all 250ms cubic-bezier(0.2, 0.8, 0.2, 1)",
+        transform: hover && variant === "primary" ? "translateY(-2px) scale(1.02)" : "translateY(0) scale(1)",
         ...style,
       }}
     >
