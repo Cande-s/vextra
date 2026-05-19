@@ -1,29 +1,142 @@
 /* eslint-disable */
-// VEXTRA — Ambient pattern: soft radial glow + slow-drifting diagonal lines.
-// Reusable across sections. Animation is very slow (40-60s) so it reads as
-// "alive" without distracting. Respects prefers-reduced-motion.
+// VEXTRA — High-end Interactive Canvas Background
+// A professional particle network that demonstrates advanced front-end capabilities.
 
 function AmbientPattern({
-  variant = "default", // "default" | "subtle" | "strong" | "right" | "left"
-  accentOpacity = 0.08,
-  lineOpacity = 0.5,
+  accentOpacity = 0.5,
 }) {
-  // Pre-baked positions per variant so different sections feel non-repeating.
-  const variants = {
-    default: { glowAt: "80% 10%", glow2At: "5% 90%", lines: [0, 1, 2] },
-    subtle:  { glowAt: "90% 100%", glow2At: "10% 0%", lines: [1, 2] },
-    strong:  { glowAt: "70% 30%", glow2At: "20% 80%", lines: [0, 1, 2, 3] },
-    right:   { glowAt: "95% 50%", glow2At: "0% 100%", lines: [0, 2] },
-    left:    { glowAt: "5% 30%", glow2At: "100% 90%", lines: [1, 2] },
-  };
-  const v = variants[variant] || variants.default;
-
-  // unique id so multiple instances don't share gradient defs
-  const uid = React.useMemo(
-    () => `vx-amb-${Math.random().toString(36).slice(2, 9)}`,
-    []
-  );
-
+  const canvasRef = React.useRef(null);
+  const mouse = React.useRef({ x: -1000, y: -1000 });
+  
+  React.useEffect(() => {
+    const canvas = canvasRef.current;
+    if (!canvas) return;
+    const ctx = canvas.getContext('2d');
+    
+    let animationFrameId;
+    let particles = [];
+    
+    // Config
+    const isMobile = window.innerWidth < 768;
+    const particleCount = isMobile ? 40 : 100;
+    const connectionDistance = isMobile ? 100 : 180;
+    const mouseRepelDistance = 150;
+    
+    const resize = () => {
+      const parent = canvas.parentElement;
+      canvas.width = parent.offsetWidth;
+      canvas.height = parent.offsetHeight;
+    };
+    
+    window.addEventListener('resize', resize);
+    resize();
+    
+    class Particle {
+      constructor() {
+        this.x = Math.random() * canvas.width;
+        this.y = Math.random() * canvas.height;
+        this.vx = (Math.random() - 0.5) * 0.4; // Very slow movement
+        this.vy = (Math.random() - 0.5) * 0.4;
+        this.radius = Math.random() * 1.5 + 0.5;
+        this.baseX = this.x;
+        this.baseY = this.y;
+      }
+      
+      update() {
+        // Move
+        this.x += this.vx;
+        this.y += this.vy;
+        
+        // Bounce smoothly
+        if (this.x < 0 || this.x > canvas.width) this.vx *= -1;
+        if (this.y < 0 || this.y > canvas.height) this.vy *= -1;
+        
+        // Mouse interaction (Repel and parallax)
+        const dx = mouse.current.x - this.x;
+        const dy = mouse.current.y - this.y;
+        const distance = Math.sqrt(dx * dx + dy * dy);
+        
+        if (distance < mouseRepelDistance) {
+          const forceDirectionX = dx / distance;
+          const forceDirectionY = dy / distance;
+          // Ease the force
+          const force = (mouseRepelDistance - distance) / mouseRepelDistance;
+          this.x -= forceDirectionX * force * 1.5;
+          this.y -= forceDirectionY * force * 1.5;
+        }
+      }
+      
+      draw() {
+        ctx.beginPath();
+        ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
+        ctx.fillStyle = `rgba(198, 138, 97, ${accentOpacity * 1.5})`;
+        ctx.fill();
+      }
+    }
+    
+    const init = () => {
+      particles = [];
+      for (let i = 0; i < particleCount; i++) {
+        particles.push(new Particle());
+      }
+    };
+    init();
+    
+    const animate = () => {
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      
+      // Update and draw particles
+      particles.forEach(p => p.update());
+      
+      // Draw connections
+      ctx.lineWidth = 1;
+      for (let i = 0; i < particles.length; i++) {
+        for (let j = i + 1; j < particles.length; j++) {
+          const dx = particles[i].x - particles[j].x;
+          const dy = particles[i].y - particles[j].y;
+          const distance = Math.sqrt(dx * dx + dy * dy);
+          
+          if (distance < connectionDistance) {
+            ctx.beginPath();
+            ctx.moveTo(particles[i].x, particles[i].y);
+            ctx.lineTo(particles[j].x, particles[j].y);
+            const opacity = 1 - (distance / connectionDistance);
+            ctx.strokeStyle = `rgba(198, 138, 97, ${opacity * accentOpacity})`;
+            ctx.stroke();
+          }
+        }
+      }
+      
+      particles.forEach(p => p.draw());
+      
+      animationFrameId = requestAnimationFrame(animate);
+    };
+    
+    animate();
+    
+    const handleMouseMove = (e) => {
+      const rect = canvas.getBoundingClientRect();
+      mouse.current = {
+        x: e.clientX - rect.left,
+        y: e.clientY - rect.top
+      };
+    };
+    
+    const handleMouseLeave = () => {
+      mouse.current = { x: -1000, y: -1000 };
+    };
+    
+    window.addEventListener('mousemove', handleMouseMove);
+    window.addEventListener('mouseout', handleMouseLeave);
+    
+    return () => {
+      window.removeEventListener('resize', resize);
+      window.removeEventListener('mousemove', handleMouseMove);
+      window.removeEventListener('mouseout', handleMouseLeave);
+      cancelAnimationFrame(animationFrameId);
+    };
+  }, [accentOpacity]);
+  
   return (
     <div
       aria-hidden="true"
@@ -32,64 +145,32 @@ function AmbientPattern({
         inset: 0,
         pointerEvents: "none",
         overflow: "hidden",
+        zIndex: 0
       }}
     >
-      {/* Two soft accent glows */}
+      <canvas
+        ref={canvasRef}
+        style={{
+          width: "100%",
+          height: "100%",
+          display: "block"
+        }}
+      />
+      {/* Elegant depth overlays */}
       <div
         style={{
           position: "absolute",
           inset: 0,
-          background: `radial-gradient(ellipse 60% 50% at ${v.glowAt}, rgba(198,138,97,${accentOpacity}) 0%, transparent 60%)`,
-          animation: "vx-glow-drift-a 28s ease-in-out infinite",
+          background: "radial-gradient(ellipse at 50% 50%, rgba(198, 138, 97, 0.05) 0%, transparent 70%)",
         }}
       />
       <div
         style={{
           position: "absolute",
           inset: 0,
-          background: `radial-gradient(ellipse 50% 40% at ${v.glow2At}, rgba(198,138,97,${accentOpacity * 0.6}) 0%, transparent 65%)`,
-          animation: "vx-glow-drift-b 36s ease-in-out infinite",
+          background: "linear-gradient(to bottom, transparent 0%, var(--bg-base) 100%)",
         }}
       />
-
-      {/* Slow-drifting diagonal lines — one accent, others near-white */}
-      <svg
-        width="100%"
-        height="100%"
-        preserveAspectRatio="none"
-        style={{
-          position: "absolute",
-          inset: 0,
-          opacity: lineOpacity,
-          animation: "vx-lines-drift 60s linear infinite",
-        }}
-      >
-        <defs>
-          <linearGradient id={`${uid}-accent`} x1="0%" y1="100%" x2="100%" y2="0%">
-            <stop offset="0%" stopColor="transparent" />
-            <stop offset="50%" stopColor="rgba(198,138,97,0.42)" />
-            <stop offset="100%" stopColor="transparent" />
-          </linearGradient>
-          <linearGradient id={`${uid}-white`} x1="0%" y1="100%" x2="100%" y2="0%">
-            <stop offset="0%" stopColor="transparent" />
-            <stop offset="50%" stopColor="rgba(255,255,255,0.08)" />
-            <stop offset="100%" stopColor="transparent" />
-          </linearGradient>
-        </defs>
-
-        {v.lines.includes(0) && (
-          <line x1="-10%" y1="100%" x2="110%" y2="0%" stroke={`url(#${uid}-accent)`} strokeWidth="1" />
-        )}
-        {v.lines.includes(1) && (
-          <line x1="-10%" y1="115%" x2="110%" y2="15%" stroke={`url(#${uid}-white)`} strokeWidth="1" />
-        )}
-        {v.lines.includes(2) && (
-          <line x1="-10%" y1="85%" x2="110%" y2="-15%" stroke={`url(#${uid}-white)`} strokeWidth="1" />
-        )}
-        {v.lines.includes(3) && (
-          <line x1="-10%" y1="130%" x2="110%" y2="30%" stroke={`url(#${uid}-white)`} strokeWidth="1" />
-        )}
-      </svg>
     </div>
   );
 }
